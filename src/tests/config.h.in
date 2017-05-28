@@ -1,0 +1,6 @@
+#ifndef HYD_TESTS_CONFIG_H
+#define HYD_TESTS_CONFIG_H
+
+#define TESTS_DATASET_DIRECTORY "@CMAKE_SOURCE_DIR@/src/tests/data"
+
+#endif

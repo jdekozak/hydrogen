@@ -56,6 +56,7 @@ Effects::Effects()
 		m_FXList[ nFX ] = NULL;
 	}
 
+	Preferences::create_instance();
 	getPluginList();
 }
 

@@ -1,4 +1,5 @@
 #include "xml_test.h"
+#include "config.h"
 
 #include <unistd.h>
 
@@ -11,7 +12,6 @@
 #include <hydrogen/basics/sample.h>
 
 #include <hydrogen/helpers/filesystem.h>
-#define BASE_DIR    "./src/tests/data"
 
 CPPUNIT_TEST_SUITE_REGISTRATION( XmlTest );
 
@@ -53,7 +53,7 @@ void XmlTest::testDrumkit()
 	H2Core::Drumkit* dk2 = 0;
 
 	// load without samples
-	dk0 = H2Core::Drumkit::load( BASE_DIR"/drumkit" );
+	dk0 = H2Core::Drumkit::load( TESTS_DATASET_DIRECTORY"/drumkit" );
 	CPPUNIT_ASSERT( dk0!=0 );
 	CPPUNIT_ASSERT( dk0->samples_loaded()==false );
 	CPPUNIT_ASSERT( check_samples_data( dk0, false ) );
@@ -65,7 +65,7 @@ void XmlTest::testDrumkit()
 	CPPUNIT_ASSERT( check_samples_data( dk0, true ) );
 	//dk0->dump();
 	// load with samples
-	dk0 = H2Core::Drumkit::load( BASE_DIR"/drumkit", true );
+	dk0 = H2Core::Drumkit::load( TESTS_DATASET_DIRECTORY"/drumkit", true );
 	CPPUNIT_ASSERT( dk0!=0 );
 	CPPUNIT_ASSERT( dk0->samples_loaded()==true );
 	CPPUNIT_ASSERT( check_samples_data( dk0, true ) );
@@ -108,12 +108,12 @@ void XmlTest::testPattern()
 	H2Core::Drumkit* dk0 = 0;
 	H2Core::InstrumentList* instruments = 0;
 
-	dk0 = H2Core::Drumkit::load( BASE_DIR"/drumkit" );
+	dk0 = H2Core::Drumkit::load( TESTS_DATASET_DIRECTORY"/drumkit" );
 	CPPUNIT_ASSERT( dk0!=0 );
 	instruments = dk0->get_instruments();
 	CPPUNIT_ASSERT( instruments->size()==4 );
 
-	pat0 = H2Core::Pattern::load_file( BASE_DIR"/pattern/pat.h2pattern", instruments );
+	pat0 = H2Core::Pattern::load_file( TESTS_DATASET_DIRECTORY"/pattern/pat.h2pattern", instruments );
 	CPPUNIT_ASSERT( pat0 );
 
 	pat0->save_file( pat_path );
