@@ -41,4 +41,4 @@ before_install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install libsndfile jack pulseaudio cppunit; fi
 
 script:
-  - mkdir build && cd build && cmake .. && make
+  - mkdir build && cd build && cmake .. && cat CMakeCache.txt && make
